@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Videograph Template">
+    <meta name="keywords" content="Videograph, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FREDDYCLEAN</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /* Hide the default cursor */
+        body {
+          cursor: none;
+        }
+    
+        /* Custom Cursor Base */
+        .custom-cursor {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          background: radial-gradient(circle, #ff6b00, #ff0d00);
+          border-radius: 50%;
+          pointer-events: none;
+          transform: translate(-50%, -50%);
+          z-index: 9999; /* Always on top */
+          box-shadow: 0 0 10px rgba(255, 107, 0, 0.8), 0 0 20px rgba(255, 13, 0, 0.8);
+          animation: beat 1s infinite ease-in-out;
+        }
+    
+        /* Beating Animation */
+        @keyframes beat {
+          0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.3);
+          }
+        }
+    
+        /* Glitch Overlay */
+        .custom-cursor::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background: inherit;
+          opacity: 0;
+          pointer-events: none;
+          animation: glitch 2s infinite;
+        }
+    
+        @keyframes glitch {
+          0% {
+            opacity: 0;
+            transform: translate(0, 0);
+          }
+          10% {
+            opacity: 1;
+            transform: translate(-3px, 3px);
+          }
+          20% {
+            opacity: 0;
+            transform: translate(0, 0);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(3px, -3px);
+          }
+          40% {
+            opacity: 0;
+            transform: translate(0, 0);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(0, 0);
+          }
+        }
+    
+        /* Flame Flicker Effect */
+        .custom-cursor::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 150, 0, 0.5), rgba(255, 0, 0, 0));
+          transform: translate(-50%, -50%) scale(0);
+          pointer-events: none;
+          animation: flame 1.5s infinite;
+        }
+    
+        @keyframes flame {
+          0%, 100% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0.8;
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.4;
+          }
+        }
+    
+        /* Particle Style */
+        .particle {
+          position: absolute;
+          pointer-events: none;
+          width: 8px;
+          height: 8px;
+          background: rgba(255, 100, 0, 0.8);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 9998;
+          animation: particleAnim 0.8s forwards;
+        }
+    
+        @keyframes particleAnim {
+          0% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(2);
+          }
+        }
+      </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Create the custom cursor element
+          const cursor = document.createElement("div");
+          cursor.classList.add("custom-cursor");
+          document.body.appendChild(cursor);
+    
+          // Update cursor position and create particles on mouse move
+          document.addEventListener("mousemove", (e) => {
+            // Update the custom cursor's position
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+    
+            // Create a new particle element at the mouse position
+            const particle = document.createElement("div");
+            particle.classList.add("particle");
+            particle.style.left = e.pageX + "px";
+            particle.style.top = e.pageY + "px";
+            document.body.appendChild(particle);
+    
+            // Remove the particle after its animation (0.8 seconds)
+            setTimeout(() => {
+              particle.remove();
+            }, 800);
+          });
+        });
+      </script>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav__option">
+                        <nav class="header__nav__menu mobile-menu">
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>
+                                <li class="active"><a href="./about.html">About</a></li>
+                                <li><a href="./services.html">Services</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./about.html">About</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="./contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__nav__social">
+                            <a href="https://www.facebook.com/freddyclean"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.reddit.com/user/Accomplished-Pie1666/"><i class="fa fa-steam"></i></a>
+                            <a href="https://github.com/freddycleann"><i class="fa fa-github"></i></a>
+                            <a href="https://www.instagram.com/souiixi"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@freddyclean5694"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>About me</h2>
+                        <div class="breadcrumb__links">
+                            <a href="#">Home</a>
+                            <span>About</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- About Section Begin -->
+    <section class="about spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about__pic">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="about__pic__item about__pic__item--large set-bg"
+                                    data-setbg="img/about/about-1.jpg"></div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="about__pic__item set-bg" data-setbg="img/about/about-2.jpg"></div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="about__pic__item set-bg" data-setbg="img/about/about-3.jpg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <span>About me</span>
+                            <h2>WHo am I?</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="services__item">
+                                    <div class="services__item__icon">
+                                        <img src="img/icons/si-3.png" alt="">
+                                    </div>
+                                    <h4>Media Editing</h4>
+                                    <p>I've been passionate at editing video, picture and portrait.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="services__item">
+                                    <div class="services__item__icon">
+                                        <img src="img/icons/si-4.png" alt="">
+                                    </div>
+                                    <h4>Game Development</h4>
+                                    <p>Participating Game Jam event and have experienced of using many game engines</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about__text__desc">
+                            <p>Studying at KING MONGKUT'S UNIVERSITY OF TECHNOLOGY NORTH BANGKOK. 
+                               currently 1st year I-BIT Faculty</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Testimonial Section Begin -->
+    <section class="testimonial spad set-bg" data-setbg="img/testimonial-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title center-title">
+                        <span>Loved By Clients</span>
+                        <h2>What clients say?</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="testimonial__slider owl-carousel">
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <div class="testimonial__text">
+                                <p>He helped me develop a game from my idea! such a wonderful work</p>
+                            </div>
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="img/testimonial/ta-1.jpg" alt="">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>Therese Basco</h5>
+                                    <span>Game Develop</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <div class="testimonial__text">
+                                <p>Edit a very long video in just a day, is he still a human?</p>
+                            </div>
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="img/testimonial/ta-2.jpg" alt="">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>Vivien</h5>
+                                    <span>Video Edit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <div class="testimonial__text">
+                                <p>He took so many pictures of me and all of them are a piece of art!</p>
+                            </div>
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="img/testimonial/ta-3.jpg" alt="">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>Vivien Therese</h5>
+                                    <span>Photograph</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <div class="testimonial__text">
+                                <p>I love how he takes care of his customer like a close friend and keep them updated</p>
+                            </div>
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="img/testimonial/ta-1.jpg" alt="">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>ViVi Basco</h5>
+                                    <span>Project Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <div class="testimonial__text">
+                                <p>I have nothing to say here but awesome! Awesome beat, Awesome melody, Awesome voice!</p>
+                            </div>
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="img/testimonial/ta-2.jpg" alt="">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5>Villalobos</h5>
+                                    <span>Music Artist</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial Section End -->
+
+    <!-- Counter Section Begin -->
+    <section class="counter">
+        <div class="container">
+            <div class="counter__content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item">
+                            <div class="counter__item__text">
+                                <img src="img/icons/ci-1.png" alt="">
+                                <h2 class="counter_num">789</h2>
+                                <p>Completed Projects</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item second__item">
+                            <div class="counter__item__text">
+                                <img src="img/icons/ci-2.png" alt="">
+                                <h2 class="counter_num">666</h2>
+                                <p>Happy clients</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item third__item">
+                            <div class="counter__item__text">
+                                <img src="img/icons/ci-3.png" alt="">
+                                <h2 class="counter_num">135</h2>
+                                <p>Perspective clients</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item four__item">
+                            <div class="counter__item__text">
+                                <img src="img/icons/ci-4.png" alt="">
+                                <h2 class="counter_num">964</h2>
+                                <p>Idea Invented</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Counter Section End -->
+
+    <!-- Team Section Begin -->
+    <section class="team spad set-bg" data-setbg="img/team-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title team__title">
+                        <span>isn't it nice to know more</span>
+                        <h2>About me</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item set-bg" data-setbg="img/team/team-1.jpg">
+                        <div class="team__item__text">
+                            <h4>Col EAn</h4>
+                            <p>Facebook</p>
+                            <div class="team__item__social">
+                                <a href="https://www.facebook.com/freddyclean"><i class="fa fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item team__item--second set-bg" data-setbg="img/team/team-2.jpg">
+                        <div class="team__item__text">
+                            <h4>souiixi</h4>
+                            <p>Instagram</p>
+                            <div class="team__item__social">
+                                <a href="https://www.instagram.com/souiixi"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item team__item--third set-bg" data-setbg="img/team/team-3.jpg">
+                        <div class="team__item__text">
+                            <h4>freddyclean</h4>
+                            <p>Youtube</p>
+                            <div class="team__item__social">
+                                <a href="https://www.youtube.com/@freddyclean5694"><i class="fa fa-youtube-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item team__item--four set-bg" data-setbg="img/team/team-4.jpg">
+                        <div class="team__item__text">
+                            <h4>FreddyClean</h4>
+                            <p>GitHub</p>
+                            <div class="team__item__social">
+                                <a href="https://github.com/freddycleann"><i class="fa fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 p-0">
+                    <div class="team__btn">
+                        <a href="./contact.html" class="primary-btn">Meet Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__logo">
+                            <a href="#"><img src="img/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__social">
+                            <a href="https://www.facebook.com/freddyclean"><i class="fa fa-facebook"></i></a>
+                            <a href="https://open.spotify.com/user/31fw75w5jcxqjzm4q7dp2hqf7bum?si=1109d5d9710c4753"><i class="fa fa-spotify"></i></a>
+                            <a href="https://github.com/freddycleann"><i class="fa fa-github"></i></a>
+                            <a href="https://www.instagram.com/souiixi"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@freddyclean5694"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__option">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer__option__item">
+                            <h5>About me</h5>
+                            <p>Blazing Spirit 1st year student</p>
+                            <a href="#" class="read__more">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__option__item">
+                            <h5>Who am I</h5>
+                            <ul>
+                                <li><a href="#">FreddyClean</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="./contact.html">Contact me</a></li>
+                                <li><a href="./contact.html">Locations</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__option__item">
+                            <h5>My work</h5>
+                            <ul>
+                                <li><a href="#">Feature</a></li>
+                                <li><a href="#">Latest</a></li>
+                                <li><a href="#">Browse Archive</a></li>
+                                <li><a href="#">Video for web</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="footer__option__item">
+                            <h5>Newsletter</h5>
+                            <p>Send me an email!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Email">
+                                <button type="submit"><i class="fa fa-send"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p class="footer__copyright__text">Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | This portfolio is made with <i class="fa fa-heart-o"
+                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
